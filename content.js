@@ -103,18 +103,11 @@ function copyChatAsMarkdown() {
         let userText = allElements[i].textContent.trim();
         let answerHtml = allElements[i + 1].innerHTML.trim();
 
-        // Demote headings in user's markdown text
-        userText = userText.replace(/^###### (.*)/gm, '- $1');
-        userText = userText.replace(/^##### (.*)/gm, '###### *$1*');
-        userText = userText.replace(/^#### (.*)/gm, '##### $1');
-        userText = userText.replace(/^### (.*)/gm, '#### $1');
-        userText = userText.replace(/^## (.*)/gm, '### $1');
-        userText = userText.replace(/^# (.*)/gm, '## $1');
-
-        userText = htmlToMarkdown(userText);
+        // 将用户消息包裹在代码块中
+        userText = "```\n" + userText + "\n```";
         answerHtml = htmlToMarkdown(answerHtml);
 
-        markdownContent += `\n# 用户问题\n${userText}\n# 回答\n${answerHtml}`;
+        markdownContent += `\n\n## 用户\n\n${userText}\n\n## 回答\n\n${answerHtml}`;
     }
 
     markdownContent = markdownContent.replace(/&amp;/g, '&');
@@ -286,20 +279,13 @@ function exportChatAsMarkdown() {
         let userText = allElements[i].textContent.trim();
         let answerHtml = allElements[i + 1].innerHTML.trim();
 
-        // Demote headings in user's markdown text
-        userText = userText.replace(/^###### (.*)/gm, '- $1');
-        userText = userText.replace(/^##### (.*)/gm, '###### *$1*');
-        userText = userText.replace(/^#### (.*)/gm, '##### $1');
-        userText = userText.replace(/^### (.*)/gm, '#### $1');
-        userText = userText.replace(/^## (.*)/gm, '### $1');
-        userText = userText.replace(/^# (.*)/gm, '## $1');
-
-        userText = htmlToMarkdown(userText);
+        // 将用户消息包裹在代码块中
+        userText = "```\n" + userText + "\n```";
         answerHtml = htmlToMarkdown(answerHtml);
 
         // const isGrok = window.location.href.includes("grok.com");
         // markdownContent += `\n# 用户问题\n${userText}\n# ${isGrok ? 'Grok' : 'ChatGPT'}\n${answerHtml}`;
-        markdownContent += `\n# 用户问题\n${userText}\n# 回答\n${answerHtml}`;
+        markdownContent += `\n\n## 用户\n\n${userText}\n\n## 回答\n\n${answerHtml}`;
     }
     markdownContent = markdownContent.replace(/&amp;/g, '&');
 
