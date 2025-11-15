@@ -1,0 +1,25 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "image128.png",
+         "16": "image16.png",
+         "48": "image48.png"
+      },
+      "default_popup": "popup.html"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "content.js" ],
+      "matches": [ "https://*.openai.com/*", "https://chatgpt.com/*", "https://grok.com/*", "https://gemini.google.com/*" ],
+      "run_at": "document_end"
+   } ],
+   "description": "Export chat history from ChatGPT and Grok websites to normal format as Markdown, which can be opened via typora exactly.",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh6+URuxV937wl2BYuwUwcGvoynFGT1ECq1r0kz38/5ab8xQN24EFbjZwjWtGZqqzBRuCQpi8/zuE8eC1D4PZoMo3KoevJfUB2KyKjYAhAxrfuQjELqZ1DJbMFGUAJv/JTZKI7tZbeKqOlLUHzNlAWGZkxAwxjEIhRF9EG15c8RrQcFeFyyO/3RWfDFNRxoULSeec+a154vQGnDYfwbN1PGKwnW19x6xYvoPIb8COWf5qo+Qr7q8USXW0pfV1QGoFrxrt2hOY/jJc+59apsHs7HGLl9i7vA9dynRPbKKsmTxKjafaJjWIB+cfzaeY/OjjRQmLVBFt9+tf3B/MWWggmQIDAQAB",
+   "manifest_version": 3,
+   "name": "ChatGPT to MarkDown plus",
+   "permissions": [  ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "5.5"
+}
